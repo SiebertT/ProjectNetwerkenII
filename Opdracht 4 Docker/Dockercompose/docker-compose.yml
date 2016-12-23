@@ -1,0 +1,21 @@
+joomla:
+  image: joomla
+  links:
+    - joomladb:mysql
+  ports:
+    - 8080:80
+
+joomladb:
+  image: mysql:5.6
+  environment:
+    MYSQL_ROOT_PASSWORD: robby
+
+
+datadog:
+  image: datadog/docker-dd-agent:latest
+  environment:
+    - API_KEY=69bb137993738dd8796a071d9633267d
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - /proc/mounts:/host/proc/mounts:ro
+    - /sys/fs/cgroup:/host/sys/fs/cgroup:ro
